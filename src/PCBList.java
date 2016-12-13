@@ -26,16 +26,14 @@ public class PCBList {
     }
 
     public void run() {
-        pcbs[0].run();
-
-        print();
-
-        if (pcbs[0].state == 0) {
-            pcbs[0] = null;
+        while (pcbs[0] != null) {
+            pcbs[0].run();
+            print();
+            if (pcbs[0].state == 0) {
+                pcbs[0] = null;
+            }
+            sort();
         }
-
-        sort();
-
     }
 
     public void init() {
@@ -43,6 +41,10 @@ public class PCBList {
     }
 
     public void print() {
-
+        System.out.println("Current process");
+        System.out.println(pcbs[0].name);
+        for (int i = 1; i < 5; i++) {
+            System.out.println(pcbs[i].name);
+        }
     }
 }
