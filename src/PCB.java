@@ -18,5 +18,6 @@ public class PCB {
         this.name = name;
         this.runtime = runtime;
         this.access = access;
+        this.state = 1;
     }
 }

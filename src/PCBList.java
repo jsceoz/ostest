@@ -16,7 +16,7 @@ public class PCBList {
         PCB pcb_s;
         for (int i = 0; i < 5; i++) {
             for (int j = i + 1; j < 5; j++) {
-                if (pcbs[i].access < pcbs[j].access || pcbs[i] == null) {
+                if (pcbs[i].access < pcbs[j].access) {
                     pcb_s = pcbs[i];
                     pcbs[i] = pcbs[j];
                     pcbs[j] = pcb_s;
@@ -26,11 +26,11 @@ public class PCBList {
     }
 
     public void run() {
-        while (pcbs[0] != null) {
+        while (pcbs[0].access != -1) {
             pcbs[0].run();
             print();
             if (pcbs[0].state == 0) {
-                pcbs[0] = null;
+                pcbs[0].access = -1;
             }
             sort();
         }
@@ -41,10 +41,23 @@ public class PCBList {
     }
 
     public void print() {
-        System.out.println("Current process");
+        System.out.println("Current process:");
         System.out.println(pcbs[0].name);
+        System.out.println(pcbs[0].runtime);
+        System.out.println(pcbs[0].access);
+        System.out.println(pcbs[0].state);
+        System.out.println("queue:");
         for (int i = 1; i < 5; i++) {
-            System.out.println(pcbs[i].name);
+            if (pcbs[i].state == 1){
+                System.out.println(pcbs[i].name);
+            }
         }
+        System.out.println("done");
+        for (int i = 1; i < 5; i++) {
+            if (pcbs[i].state == 0){
+                System.out.println(pcbs[i].name);
+            }
+        }
+        System.out.println("---------------");
     }
 }
