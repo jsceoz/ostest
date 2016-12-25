@@ -1,0 +1,1 @@
+/usr/bin/c++.exe  -g  -Wl,--enable-auto-import CMakeFiles/ostest_5.dir/main.cpp.o  -o ostest_5.exe -Wl,--out-implib,libostest_5.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
